@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical OPD Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+      img.logo {
+        width: 70px;
+    }
+    header {
+      background-color: #0a4275;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    h4.head-logo {
+      font-size: 32px;
+      margin: 0px;
+}
+   h1{
+     font-size: 56px;
+   }
+   h2 {
+    font-size: 36px;
+    color: #c61e1e;
+   }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    section {
+      padding: 50px 0;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    section:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+
+    #home {
+      background-image: url('file:///C:/Users/admin/Downloads/main-img.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #home h2 {
+      font-size: 48px;
+    }
+
+    #home p {
+      font-size: 24px;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .icon {
+      font-size: 2em;
+      padding: 20px;
+      background: #e0f0ff;
+      border-radius: 10px;
+    }
+
+    /* Services */
+    .service-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      text-align: center;
+      border-radius: 8px;
+      width: 31%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      background: #fff;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .service-card h3 {
+      font-size: 1.5em;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    .service-card p {
+      padding: 10px;
+      font-size: 1em;
+      color: #777;
+      line-height: 1.5;
+    }
+
+    /* Doctors */
+    .doctors-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; 
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    .doctor {
+      padding: 20px;
+      background: #f0f8ff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeInZoom 1s ease forwards;
+      opacity: 0;
+      transform: scale(0.95);
+      font-size: 1.1em;
+    }
+
+    .doctor:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: auto;
+      gap: 15px;
+    }
+
+    input, select, button {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #0a4275;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+.reviews-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.review-box {
+  background: #fdfdfd;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 25px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.review-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.review-box .quote {
+  font-style: italic;
+  font-size: 1.05em;
+  margin-bottom: 10px;
+}
+
+.review-box .reviewer {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.review-box .stars {
+  color: #f9a825;
+  font-size: 1.2em;
+}
+
+    button:hover {
+      background-color: #063053;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInZoom {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .icon-container { flex-direction: column; }
+      .service-card { width: 90%; }
+    }
+   @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 15px;
+  }
+
+  .icon-container {
+    flex-direction: column;
+  }
+
+  .service-card {
+    width: 90%;
+  }
+
+  .doctors-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 425px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  #home h2 {
+    font-size: 30px;
+  }
+
+  #home p {
+    font-size: 18px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .review-box {
+    width: 90%;
+  }
+
+  nav a {
+    display: block;
+    margin: 8px 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="file:///C:/Users/admin/Downloads/hospital-icon-Picsart-BackgroundRemover.jpg" alt="Company Logo" class="logo" />
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#icons">Icons</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#booking">Booking</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#blogs">Blogs</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h1>Welcome to Our Medical Center</h1>
+    <p>Book your OPD appointment quickly and easily.</p>
+  </section>
+
+  <section id="icons">
+    <h2>Why Choose Us</h2>
+    <div class="icon-container">
+      <div class="icon">🏥 Expert Care</div>
+      <div class="icon">🕒 24/7 Service</div>
+      <div class="icon">💊 Pharmacy</div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-container">
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/21683392_Tiny%20cardiology%20doctor%20and%20nurse%20examining%20heart" alt="Cardiology" />
+        <h3>Cardiology</h3>
+        <p>Expert care for heart diseases, including diagnostics and treatments.</p>
+      </div>
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/16608179_2103.i105.019_isometric_orthopedic_flowchart.jpg" alt="Orthopedics" />
+        <h3>Orthopedics</h3>
+        <p>Comprehensive orthopedic care for bones, joints, and muscles.</p>
+      </div>
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/flat-hand-drawn-patient-taking-medical-examination.jpg" alt="Pediatrics" />
+        <h3>Pediatrics</h3>
+        <p>Providing specialized care for children's health and well-being.</p>
+      </div>
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/neurology.jpg" alt="neurology">
+         <h3>Neurology</h3>
+        <p>Diagnosis and treatment of brain, spine, and nervous system disorders.</p>
+      </div>
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/dermatology.jpg" alt="Dermatology" />
+        <h3>Dermatology</h3>
+        <p>Advanced care for skin, hair, and nail conditions.</p>
+      </div>
+      <div class="service-card">
+        <img src="file:///C:/Users/admin/Downloads/radiology.jpg" alt="Radiology" />
+        <h3>Radiology</h3>
+        <p>State-of-the-art imaging for accurate diagnosis and care.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are a modern clinic providing world-class healthcare services with a focus on patient satisfaction and care.</p>
+  </section>
+
+  <section id="doctors">
+    <h2>Our Doctors</h2>
+    <div class="doctors-container">
+      <div class="doctor">👨‍⚕️ Dr. Suraj S – Cardiologist</div>
+      <div class="doctor">👩‍⚕️ Dr. Amruta – Pediatrician</div>
+      <div class="doctor">🦴 Dr. Rahul – Orthopedics</div>
+      <div class="doctor">🧠 Dr. Priya – Neurologist</div>
+      <div class="doctor">🧴 Dr. Ahmed – Dermatologist</div>
+      <div class="doctor">🖼️ Dr. Ravi – Radiologist</div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2>Book Your Appointment</h2>
+    <form id="bookingForm">
+      <input name="name" type="text" placeholder="Full Name" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="phone" type="tel" placeholder="Phone Number (with country code)" required>
+      <input name="date" type="date" required>
+      <select name="department" required>
+        <option value="">Select Department</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Radiology">Radiology</option>
+      </select>
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+
+<section id="reviews">
+  <h2>What Our Patients Say</h2>
+  <div class="reviews-container">
+    <div class="review-box">
+      <p class="quote">“Excellent service! Dr. Ravi was very kind and professional.”</p>
+      <p class="reviewer">– Pooja V.</p>
+      <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="review-box">
+      <p class="quote">“Booking an appointment was easy. The staff was helpful and welcoming.”</p>
+      <p class="reviewer">– Rejesh C.</p>
+      <p class="stars">⭐⭐⭐⭐</p>
+    </div>
+    <div class="review-box">
+      <p class="quote">“Clean facilities and no long wait times. I highly recommend this clinic!”</p>
+      <p class="reviewer">– Swapnil P</p>
+      <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="blogs">
+    <h2>Our Latest Blogs</h2>
+    <article>
+      <h3>🩺 Health Tips</h3>
+      <p>Stay hydrated, exercise daily, and eat a balanced diet to stay healthy.</p>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 OPD Booking System. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        date: form.date.value,
+        department: form.department.value
+      };
+
+      const res = await fetch("http://localhost:3000/send-sms", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        alert("Appointment booked and SMS sent!");
+        form.reset();
+      } else {
+        alert("Error: " + result.error);
+      }
+    });
+
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
